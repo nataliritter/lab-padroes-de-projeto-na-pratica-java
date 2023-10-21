@@ -1,0 +1,27 @@
+import org.springframework.stereotype.Service;
+
+@Service
+public class ReciclagemService {
+    private double precoPapel = 1.00;
+    private double precoAluminio = 4.00;
+    private double precoCobre = 8.00;
+    private double precoPlastico = 2.00;
+
+    public double calcularValor(MaterialVenda materialVenda) {
+        double valorTotal = 0.0;
+        String material = materialVenda.getTipo();
+        double kg = materialVenda.getQuantidade();
+
+        if ("papel".equals(material)) {
+            valorTotal = precoPapel * kg;
+        } else if ("aluminio".equals(material)) {
+            valorTotal = precoAluminio * kg;
+        } else if ("cobre".equals(material)) {
+            valorTotal = precoCobre * kg;
+        } else if ("plastico".equals(material)) {
+            valorTotal = precoPlastico * kg;
+        }
+
+        return valorTotal;
+    }
+}

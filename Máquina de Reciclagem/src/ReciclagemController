@@ -1,0 +1,14 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/reciclagem")
+public class ReciclagemController {
+    @Autowired
+    private ReciclagemService reciclagemService;
+
+    @PostMapping("/calcularValor")
+    public double calcularValor(@RequestBody MaterialVenda materialVenda) {
+        return reciclagemService.calcularValor(materialVenda);
+    }
+}
